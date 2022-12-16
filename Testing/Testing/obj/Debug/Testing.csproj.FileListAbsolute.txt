@@ -1,0 +1,11 @@
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\bin\Debug\Testing.exe.config
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\bin\Debug\Testing.exe
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\bin\Debug\Testing.pdb
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\bin\Debug\WebServerLib.dll
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\bin\Debug\WebServerLib.pdb
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\obj\Debug\Testing.csproj.AssemblyReference.cache
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\obj\Debug\Testing.csproj.SuggestedBindingRedirects.cache
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\obj\Debug\Testing.csproj.CoreCompileInputs.cache
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\obj\Debug\Testing.csproj.CopyComplete
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\obj\Debug\Testing.exe
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\Testing\obj\Debug\Testing.pdb

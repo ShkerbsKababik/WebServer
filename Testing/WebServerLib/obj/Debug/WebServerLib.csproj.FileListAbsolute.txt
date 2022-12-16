@@ -1,0 +1,6 @@
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\WebServerLib\bin\Debug\WebServerLib.dll
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\WebServerLib\bin\Debug\WebServerLib.pdb
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.csproj.AssemblyReference.cache
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.csproj.CoreCompileInputs.cache
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.dll
+C:\Users\vovan\OneDrive\Рабочий стол\GitHub\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.pdb
