@@ -7,7 +7,7 @@ using WebServerLib;
 
 namespace Testing
 {
-    internal class Program
+    internal class Programр9мщ
     {
         static void Main(string[] args)
         {
