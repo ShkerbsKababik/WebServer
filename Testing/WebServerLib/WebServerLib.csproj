@@ -41,15 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Componets\Component.cs" />
-    <Compile Include="Componets\IComponent.cs" />
-    <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Exceptions\MiddlewaresNoBuidldedException.cs" />
+    <Compile Include="Exceptions\NoControllersException.cs" />
+    <Compile Include="Exceptions\NoLIstenerException.cs" />
+    <Compile Include="Exceptions\NoMiddlewaresException.cs" />
+    <Compile Include="Exceptions\ServerFatalException.cs" />
+    <Compile Include="Exceptions\UserServeFailedException.cs" />
+    <Compile Include="Pipelines\ControllersPipeline.cs" />
+    <Compile Include="Pipelines\MiddlewaresPipeline.cs" />
+    <Compile Include="MiddleWares\IMiddleware.cs" />
+    <Compile Include="Pipelines\MiddlewaresPipelineDelegate.cs" />
     <Compile Include="WebServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebServerThrowIf.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

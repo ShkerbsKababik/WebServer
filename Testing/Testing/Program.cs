@@ -11,8 +11,7 @@ namespace Testing
     {
         static void Main(string[] args)
         {
-            new WebServer().Start();
-            Console.ReadLine();
+            
         }
     }
 }
