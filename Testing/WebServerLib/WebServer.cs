@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
@@ -11,6 +12,7 @@ using WebServerLib.Controllers;
 using WebServerLib.Exceptions;
 using WebServerLib.MiddleWares;
 using WebServerLib.Pipelines;
+using WebServerLib.QueryServers;
 
 namespace WebServerLib
 {
@@ -18,39 +20,46 @@ namespace WebServerLib
     {
         // 1) want to make exception handler (it will log errors and it will be switchable)
         // 2) want to create Router
+        // 3) want to create Builder in which logger router ip-configs will able to change
 
-        private MiddlewaresPipeline _middlewaresPipeline;
-        private ControllersPipeline _controllersPipeline;
-        private HttpListener _listener;
+        readonly MiddlewaresPipeline _middlewaresPipeline;
+        readonly ControllersPipeline _controllersPipeline;
+        readonly HttpListener _listener;
 
+        readonly IQueryHandler _controllerQueryHandler;
+        readonly IQueryHandler _staticFileQueryHandler;
+      
         public WebServer()
         {
             _middlewaresPipeline = new MiddlewaresPipeline();
             _controllersPipeline = new ControllersPipeline();
             _listener = new HttpListener();
+
+            _controllerQueryHandler = new ControllerQueryHandler(
+                _middlewaresPipeline,
+                _controllersPipeline);
+
+            _staticFileQueryHandler = new StaticFileQueryHandler(
+                _middlewaresPipeline); 
         }
         public void Run()
         {
             Diagnose();
             _listener.Start();
-            while(true)
-            {
-                try
-                {
-                    ThreadPool.QueueUserWorkItem((object obj) => { 
-                        Serve(_listener.GetContext()); 
+            while (true)
+                try {
+                    ThreadPool.QueueUserWorkItem((object obj) => {
+                        Serve(_listener.GetContext());
                     });
                 }
-                catch (Exception e) { 
-                    // 1)s
-                }
-            }
+                catch (Exception e){ }
         }
-        private void Serve(HttpListenerContext context)
+        void Serve(HttpListenerContext context)
         {
-            // 2) there will be call for Router
-            _middlewaresPipeline.Run(context.Request);
-            _controllersPipeline.Run(context, "def");
+            if (context.Request.Url.IsFile)
+                _staticFileQueryHandler.Serve(context);
+            else
+                _controllerQueryHandler.Serve(context); 
         }
     }
 }

@@ -52,6 +52,10 @@
     <Compile Include="Pipelines\MiddlewaresPipeline.cs" />
     <Compile Include="MiddleWares\IMiddleware.cs" />
     <Compile Include="Pipelines\MiddlewaresPipelineDelegate.cs" />
+    <Compile Include="QueryHandlers\ControllerQueryHandler.cs" />
+    <Compile Include="QueryHandlers\IQueryHandler.cs" />
+    <Compile Include="QueryHandlers\StaticFileQueryHandler.cs" />
+    <Compile Include="ServerFunction\UseStaticFiles.cs" />
     <Compile Include="WebServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebServerThrowIf.cs" />

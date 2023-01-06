@@ -17,12 +17,12 @@ namespace WebServerLib
         }
         private void ThrowIfNoContollers()
         {
-            if (_controllers == null || _controllers.Count == 1) 
+            if (_controllersPipeline == null) 
                 throw new NoControllersException();
         }
         private void ThrowIfNoMiddlewares()
         {
-            if (_middlewares == null || _middlewares.Count == 0)
+            if (_middlewaresPipeline == null)
                 throw new NoMiddlewaresException();
         }
         private void ThrowIfListenerEmpty()
@@ -31,9 +31,9 @@ namespace WebServerLib
                 throw new NoLIstenerException();
         }
         private void ThrowIfMiddlewaresNoBuilded()
-        { 
-            if(!_middlewaresPipeline.Builded)
-                throw new MiddlewaresNoBuidldedException()
+        {
+            if (!_middlewaresPipeline.Builded)
+                throw new MiddlewaresNoBuidldedException();
         }
     }
 }

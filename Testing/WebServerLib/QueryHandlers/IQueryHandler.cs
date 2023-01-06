@@ -5,11 +5,10 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebServerLib.Controllers
+namespace WebServerLib.QueryServers
 {
-    public interface IController
+    public interface IQueryHandler
     {
-        string Name { get; set; }
-        void Run(HttpListenerContext context);
+        void Serve(HttpListenerContext context);
     }
 }
