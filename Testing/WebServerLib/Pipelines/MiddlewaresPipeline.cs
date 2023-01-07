@@ -1,28 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using WebServerLib.MiddleWares;
-using WebServerLib.Pipelines;
 
 namespace WebServerLib
 {
     internal class MiddlewaresPipeline
     {
-        internal List<IMiddleware> _middlewares;
-        private MiddlewaresPipelineDelegate _pipeline;
-        internal bool Builded { get { return _pipeline != null; } }
-
-        internal void Build(List<IMiddleware> middlewares)
+        public List<IMiddleware> Middlewares = new List<IMiddleware>();
+        public void Run(HttpListenerContext context)
         {
-            foreach (IMiddleware middleware in middlewares)
-                _pipeline += middleware.Run;
-        }
-        internal void Run(HttpListenerRequest request)
-        {
-            _pipeline(request);
+            foreach (IMiddleware middleware in Middlewares)
+                middleware.Run(context.Request);
         }
     }
 }

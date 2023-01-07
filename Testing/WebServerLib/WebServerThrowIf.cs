@@ -9,12 +9,6 @@ namespace WebServerLib
 {
     public sealed partial class WebServer
     {
-        private void Diagnose()
-        {
-            ThrowIfListenerEmpty();
-            ThrowIfNoContollers();
-            ThrowIfMiddlewaresNoBuilded();
-        }
         private void ThrowIfNoContollers()
         {
             if (_controllersPipeline == null) 
@@ -32,7 +26,7 @@ namespace WebServerLib
         }
         private void ThrowIfMiddlewaresNoBuilded()
         {
-            if (!_middlewaresPipeline.Builded)
+            if (_middlewaresPipeline.Middlewares != null)
                 throw new MiddlewaresNoBuidldedException();
         }
     }

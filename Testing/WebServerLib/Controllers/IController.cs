@@ -9,7 +9,7 @@ namespace WebServerLib.Controllers
 {
     public interface IController
     {
-        string Name { get; set; }
+        string Name { get; }
         void Run(HttpListenerContext context);
     }
 }

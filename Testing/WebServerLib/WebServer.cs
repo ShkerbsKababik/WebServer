@@ -1,65 +1,68 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Net;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
+using System.Runtime.Remoting.Contexts;
 using System.Threading;
-using System.Threading.Tasks;
 using WebServerLib.Controllers;
 using WebServerLib.Exceptions;
 using WebServerLib.MiddleWares;
 using WebServerLib.Pipelines;
-using WebServerLib.QueryServers;
 
 namespace WebServerLib
 {
     public sealed partial class WebServer
     {
-        // 1) want to make exception handler (it will log errors and it will be switchable)
-        // 2) want to create Router
-        // 3) want to create Builder in which logger router ip-configs will able to change
+        // 1) identify for different kinds of static files
+        // 2) info parser from http-query
+        // 3) builder
+        // 4) static files caching
 
-        readonly MiddlewaresPipeline _middlewaresPipeline;
-        readonly ControllersPipeline _controllersPipeline;
-        readonly HttpListener _listener;
+        MiddlewaresPipeline _middlewaresPipeline;
+        ControllersPipeline _controllersPipeline;
+        HttpListener _listener;
 
-        readonly IQueryHandler _controllerQueryHandler;
-        readonly IQueryHandler _staticFileQueryHandler;
-      
         public WebServer()
         {
             _middlewaresPipeline = new MiddlewaresPipeline();
             _controllersPipeline = new ControllersPipeline();
             _listener = new HttpListener();
-
-            _controllerQueryHandler = new ControllerQueryHandler(
-                _middlewaresPipeline,
-                _controllersPipeline);
-
-            _staticFileQueryHandler = new StaticFileQueryHandler(
-                _middlewaresPipeline); 
         }
         public void Run()
         {
-            Diagnose();
             _listener.Start();
             while (true)
-                try {
+                try
+                {
                     ThreadPool.QueueUserWorkItem((object obj) => {
                         Serve(_listener.GetContext());
                     });
                 }
-                catch (Exception e){ }
+                catch(Exception e) { _logger.Log(e); }
         }
-        void Serve(HttpListenerContext context)
+
+        Action<HttpListenerContext> ChooseQueryHandler(HttpListenerContext context)
         {
             if (context.Request.Url.IsFile)
-                _staticFileQueryHandler.Serve(context);
-            else
-                _controllerQueryHandler.Serve(context); 
+                return StaticFileQueryHandler;
+            return ControllerQueryHandler;
         }
+        void Serve(HttpListenerContext context) 
+            => ChooseQueryHandler(context)(context);
+
+        public void AddController(IController controller)
+        {
+            foreach (IController item in _controllersPipeline.Controllers)
+                if (controller.Name == item.Name)
+                    throw new ControllerAlreadyExistsException();
+
+            _controllersPipeline.Controllers.Add(controller);
+        }
+        public void AddMiddleware(IMiddleware middleware)
+        {
+            foreach (IController item in _middlewaresPipeline.Middlewares)
+                if (middleware == item)
+                    throw new MiddlewareAlreadyExcistsException();
+
+            _middlewaresPipeline.Middlewares.Add(middleware);
+        }s
     }
 }

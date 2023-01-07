@@ -8,3 +8,9 @@ C:\Users\vovan\OneDrive\Рабочий стол\GitHubRepos\WebServer\Testing\We
 C:\Users\vovan\OneDrive\Рабочий стол\GitHubRepos\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.csproj.CoreCompileInputs.cache
 C:\Users\vovan\OneDrive\Рабочий стол\GitHubRepos\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.dll
 C:\Users\vovan\OneDrive\Рабочий стол\GitHubRepos\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.pdb
+D:\Work\GitHub\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.csproj.AssemblyReference.cache
+D:\Work\GitHub\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.csproj.CoreCompileInputs.cache
+D:\Work\GitHub\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.dll
+D:\Work\GitHub\WebServer\Testing\WebServerLib\obj\Debug\WebServerLib.pdb
+D:\Work\GitHub\WebServer\Testing\WebServerLib\bin\Debug\WebServerLib.dll
+D:\Work\GitHub\WebServer\Testing\WebServerLib\bin\Debug\WebServerLib.pdb
